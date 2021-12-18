@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stylify browser example</title>
+</head>
+<body>
+
+	<div class="color:$blue font-size:$fontSize text-align:center">Hello World</div>
+ 	<script>
+		document.addEventListener('stylify:ready', (event) => {
+			const runtime = event.detail;
+			runtime.configure({
+				compiler: {
+					variables: {
+						fontSize: '48px'
+					}
+				}
+			})
+		});
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js" integrity="sha256-GTrpA8ciFraUhjNCwG1oRkXTNsnhk45K1s4iI1ptHLE=" crossorigin="anonymous"></script>
+	<script>
+		Stylify.configure({
+			compiler: {
+				variables: {
+					blue: 'steelblue'
+				}
+			}
+		});
+	</script>
+</body>
+</html>
