@@ -1,5 +1,5 @@
 {
   "devDependencies": {
-    "@stylify/bundler": "^0.0.2"
+    "@stylify/bundler": "^0.0"
   }
 }

@@ -23,7 +23,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@stylify/bundler@^0.0.2":
+"@stylify/bundler@^0.0":
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@stylify/bundler/-/bundler-0.0.2.tgz#b40b1eac63caf1b8acfd92c5edeefcf15bb61a53"
   integrity sha512-j3IA9g/ZHY+tZNNc31M/g6wx6OoZrTXzWNAuf74BnEiAt4Sv1f+7X/BScwL3VBnKV1hrRnYg8O9sBMjamzdjbg==
