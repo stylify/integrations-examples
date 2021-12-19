@@ -1,13 +1,15 @@
 const { nativePreset } = require('@stylify/stylify');
 const { Bundler } = require('@stylify/bundler');
 
+const watchFiles = process.argv[process.argv.length - 1] === '--w';
+
 nativePreset.compiler.variables = {
 	blue: 'steelblue'
 }
 
 const bundler = new Bundler({
 	compilerConfig: nativePreset.compiler,
-	watchFiles: false
+	watchFiles: watchFiles
 });
 
 bundler.bundle([

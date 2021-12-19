@@ -1,5 +1,14 @@
-In order to bundle files within this example run:
+This is an example for https://stylify.dev/integrations/nodejs
+
+## Setup
 
 ```
-node bundles.js
+yarn install
+
+yarn watch
 ```
+
+## Files where the Stylify is included
+
+- bundles.js
+- index.html

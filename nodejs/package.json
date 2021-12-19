@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "build": "node bundles.js",
+    "watch": "node bundles.js --w"
+  },
   "devDependencies": {
     "@stylify/bundler": "^0.0"
   }

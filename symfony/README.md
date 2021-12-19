@@ -1,3 +1,5 @@
+This is an example for https://stylify.dev/integrations/symfony
+
 ## Setup
 
 ```
@@ -10,7 +12,7 @@ npm run build
 php -S 0.0.0.0:3000 -t www
 ```
 
-## Files where Stylify is included
+## Files where the Stylify is included
 
 - webpack.config.js
 - templates/base.html.twig

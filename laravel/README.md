@@ -1,3 +1,5 @@
+This is an example for https://stylify.dev/integrations/laravel
+
 ## Setup
 
 ```
@@ -10,7 +12,7 @@ npm run prod
 php artisan serve --host=0.0.0.0 --port=3000
 ```
 
-## Files where stylify is includes
+## Files where the Stylify is included
 
 - webpack.mix.js
 - resources/views/welcome.blade.php
