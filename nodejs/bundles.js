@@ -8,7 +8,7 @@ nativePreset.compiler.variables = {
 }
 
 const bundler = new Bundler({
-	compilerConfig: nativePreset.compiler,
+	compiler: nativePreset.compiler,
 	watchFiles: watchFiles
 });
 

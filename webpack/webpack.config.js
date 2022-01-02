@@ -10,7 +10,7 @@ class StylifyPlugin {
 		};
 
 		const bundler = new Bundler({
-			compilerConfig: nativePreset.compiler,
+			compiler: nativePreset.compiler,
 			watchFiles: compiler.options.watch || false
 		});
 
