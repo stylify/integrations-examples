@@ -1,45 +1,32 @@
-const { nativePreset } = require('@stylify/stylify');
-const { Bundler } = require('@stylify/bundler');
+const { webpackPlugin } = require('@stylify/unplugin');
 
-class StylifyPlugin {
-  constructor(options) {
-    this.options = {
-      ...{
-        isDev: false,
-      },
-      ...options
-    }
-  }
-	apply(compiler) {
-		nativePreset.compiler.variables = {
-			blue: 'steelblue'
-		};
-
-		const bundler = new Bundler({
-			compiler: nativePreset.compiler,
-			watchFiles: this.options.isDev
-		});
-
-		bundler.bundle([
-			{
-				outputFile: './styles/stylify.css',
-				files: ['./pages/**/*.js']
+const stylifyPlugin = (dev) => webpackPlugin({
+	dev: dev,
+	transformIncludeFilter: (id) => id.endsWith('js'),
+	bundles: [{
+		outputFile: './styles/stylify.css',
+		files: ['./pages/**/*.js'],
+	}],
+	extend: {
+		bundler: {
+			compiler: {
+				variables: {
+					blue: 'steelblue'
+				},
+				selectorsAreas: [
+					'(?:^|\\s+)className="([^"]+)"',
+					'(?:^|\\s+)className=\'([^\']+)\'',
+					'(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
+				]
 			}
-		]);
-
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
+		}
 	}
-}
+});
 
 module.exports = {
   reactStrictMode: true,
   webpack: (config, { dev }) => {
-    config.plugins.push(new StylifyPlugin({ isDev: dev }));
+    config.plugins.unshift(stylifyPlugin(dev));
     return config;
   }
 }

@@ -4,12 +4,12 @@
     "watch": "webpack -w"
   },
   "devDependencies": {
-    "@stylify/bundler": "^0.0",
-    "css-loader": "^6.5",
+    "@stylify/unplugin": "^0.0",
+    "css-loader": "^6.7",
     "postcss": "^8.4",
-    "postcss-loader": "^6.2",
+    "postcss-loader": "^7.0",
     "style-loader": "^3.3",
-    "webpack": "^5.65",
+    "webpack": "^5.73",
     "webpack-cli": "^4.9"
   }
 }

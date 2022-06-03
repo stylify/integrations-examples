@@ -1,37 +1,30 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { nativePreset } from '@stylify/stylify';
-import { Bundler } from '@stylify/bundler';
+import { vitePlugin } from '@stylify/unplugin';
+
+const stylifyPlugin =	vitePlugin({
+	transformIncludeFilter: (id) => id.endsWith('vue'),
+	bundles: [{
+		files: ['./src/**/*.vue'],
+		outputFile: './src/assets/stylify.css'
+	}],
+	extend: {
+		bundler: {
+			compiler: {
+				variables: {
+					blue: 'steelblue'
+				}
+			}
+		}
+	}
+});
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode}) => {
-  nativePreset.compiler.variables = {
-    blue: 'steelblue'
-  };
-
-  const bundler = new Bundler({
-    compiler: nativePreset.compiler,
-    watchFiles: mode === 'development'
-  });
-
-  const bundle = async () => {
-    bundler.bundle([
-      {
-        files: ['./src/**/*.vue'],
-        outputFile: './src/assets/stylify.css'
-      }
-    ]);
-    return bundler.waitOnBundlesProcessed();
-  };
-
-  const stylifyBundlerPlugin = () => {
-    return {
-      name: 'stylify',
-      options: bundle
-    }
-  };
-
   return {
-    plugins: [vue(), stylifyBundlerPlugin()]
+    server: {
+      host: '0.0.0.0'
+    },
+    plugins: [stylifyPlugin, vue()]
   }
-})
+});

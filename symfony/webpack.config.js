@@ -1,42 +1,26 @@
 const Encore = require('@symfony/webpack-encore');
-const { nativePreset } = require('@stylify/stylify');
-const { Bundler } = require('@stylify/bundler');
+const { webpackPlugin } = require('@stylify/unplugin');
 const path = require('path');
 
 const layoutCssPath = './assets/styles/layout.css';
 const homepageCssPath = './assets/styles/homepage.css';
-class StylifyPlugin {
-	apply(compiler) {
-        nativePreset.compiler.injectVariablesIntoCss = false;
-		nativePreset.compiler.variables = {
-			blue: 'steelblue'
-		};
 
-		const bundler = new Bundler({
-			compiler: nativePreset.compiler,
-            cssVarsDirPath: './assets/styles',
-			watchFiles: compiler.options.watch || false
-		});
-
-		bundler.bundle([
-			{
-				outputFile: layoutCssPath,
-				files: ['./templates/base.html.twig']
-			},
-            {
-                outputFile: homepageCssPath,
-                files: ['./templates/homepage/homepage.html.twig']
-            }
-		]);
-
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
+const stylifyPlugin = webpackPlugin({
+	transformIncludeFilter: (id) => id.endsWith('html'),
+	bundles: [
+		{ outputFile: layoutCssPath, files: ['./templates/base.html.twig'] },
+		{ outputFile: homepageCssPath, files: ['./templates/homepage/homepage.html.twig'] }
+	],
+	extend: {
+		bundler: {
+			compiler: {
+				variables: {
+					blue: 'steelblue'
+				}
+			}
+		}
 	}
-}
+});
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -45,7 +29,7 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
-    .addPlugin(new StylifyPlugin())
+    .addPlugin(stylifyPlugin)
     .addStyleEntry('layout', [
         './assets/styles/stylify-variables.css',
         layoutCssPath
