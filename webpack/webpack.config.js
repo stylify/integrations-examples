@@ -1,38 +1,12 @@
 
-const { nativePreset } = require('@stylify/stylify');
-const { Bundler } = require('@stylify/bundler');
 const path = require('path');
+const { webpackPlugin } = require('@stylify/unplugin');
 
-class StylifyPlugin {
-	apply(compiler) {
-		nativePreset.compiler.variables = {
-			blue: 'steelblue'
-		};
-
-		const bundler = new Bundler({
-			compiler: nativePreset.compiler,
-			watchFiles: compiler.options.watch || false
-		});
-
-		bundler.bundle([
-			{
-				outputFile: './index.css',
-				files: ['./index.html']
-			}
-		]);
-
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
-	}
-}
+const mode = 'development';
 
 module.exports = {
 	entry: './input.js',
-	mode: 'production',
+	mode: mode,
 	module: {
 		rules: [
 			{
@@ -42,7 +16,25 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new StylifyPlugin(),
+		webpackPlugin({
+			transformIncludeFilter: (id) => id.endsWith('html'),
+			bundles: [
+				{
+					outputFile: './index.css',
+					files: ['./index.html'],
+					rewriteSelectorsInFiles: mode === 'production'
+				}
+			],
+			extend: {
+				bundler: {
+					compiler: {
+						variables: {
+							blue: 'steelblue'
+						}
+					}
+				}
+			}
+		})
 	],
 	output: {
 		path: path.resolve(__dirname),
