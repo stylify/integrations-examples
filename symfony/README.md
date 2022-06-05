@@ -1,4 +1,4 @@
-This is an example for https://stylify.dev/integrations/symfony
+This is an example for https://stylify.dev/docs/integrations/symfony
 
 ## Setup
 

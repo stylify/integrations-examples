@@ -1,4 +1,4 @@
-This is an example for https://stylify.dev/integrations/nuxtjs
+This is an example for https://stylify.dev/docs/integrations/nuxtjs
 
 ## Setup
 

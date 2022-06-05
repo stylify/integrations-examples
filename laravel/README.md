@@ -1,4 +1,4 @@
-This is an example for https://stylify.dev/integrations/laravel
+This is an example for https://stylify.dev/docs/integrations/laravel
 
 ## Setup
 
