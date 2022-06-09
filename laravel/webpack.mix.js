@@ -3,7 +3,7 @@ const { webpackPlugin } = require('@stylify/unplugin');
 const path = require('path');
 
 const stylifyPlugin = webpackPlugin({
-	transformIncludeFilter: (id) => id.endsWith('html'),
+	transformIncludeFilter: (id) => id.endsWith('php'),
 	bundles: [
         { outputFile: './resources/css/homepage.css', files: ['./resources/views/welcome.blade.php'] }
     ],

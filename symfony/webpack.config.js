@@ -1,12 +1,11 @@
 const Encore = require('@symfony/webpack-encore');
 const { webpackPlugin } = require('@stylify/unplugin');
-const path = require('path');
 
 const layoutCssPath = './assets/styles/layout.css';
 const homepageCssPath = './assets/styles/homepage.css';
 
 const stylifyPlugin = webpackPlugin({
-	transformIncludeFilter: (id) => id.endsWith('html'),
+	transformIncludeFilter: (id) => id.endsWith('twig') || id.endsWith('php'),
 	bundles: [
 		{ outputFile: layoutCssPath, files: ['./templates/base.html.twig'] },
 		{ outputFile: homepageCssPath, files: ['./templates/homepage/homepage.html.twig'] }
@@ -30,10 +29,7 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 
 Encore
     .addPlugin(stylifyPlugin)
-    .addStyleEntry('layout', [
-        './assets/styles/stylify-variables.css',
-        layoutCssPath
-    ])
+    .addStyleEntry('layout', layoutCssPath)
     .addStyleEntry('homepage', homepageCssPath)
 
     .setOutputPath('public/build/')
