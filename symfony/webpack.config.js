@@ -8,17 +8,21 @@ const stylifyPlugin = webpackPlugin({
 	transformIncludeFilter: (id) => id.endsWith('twig') || id.endsWith('php'),
 	bundles: [
 		{ outputFile: layoutCssPath, files: ['./templates/base.html.twig'] },
-		{ outputFile: homepageCssPath, files: ['./templates/homepage/homepage.html.twig'] }
+		{ outputFile: homepageCssPath, files: ['./templates/homepage.html.twig'] }
 	],
 	extend: {
-		bundler: {
-			compiler: {
-				variables: {
-					blue: 'steelblue'
-				}
-			}
-		}
-	}
+        bundler: {
+            compiler: {
+                variables: {
+                  	containerSize: '800px',
+                    textColor: 'blue'
+                },
+                components: {
+                    container: 'max-width:$containerSize margin:0__auto'
+                }
+            }
+        }
+    }
 });
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.

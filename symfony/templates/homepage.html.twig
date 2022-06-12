@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {{ encore_entry_link_tags('homepage') }}
+{% endblock %}
+
+{% block body %}
+<div class="color:$textColor">Hello world!</div>
+{% endblock %}
