@@ -1,4 +1,4 @@
-This is an example for https://stylify.dev/docs/integrations/nodejs
+This is an example for https://stylifycss.com/docs/integrations/nodejs
 
 ## Setup
 

@@ -1,4 +1,4 @@
-This is an example for https://stylify.dev/docs/integrations/nextjs
+This is an example for https://stylifycss.com/docs/integrations/nextjs
 
 # Setup
 

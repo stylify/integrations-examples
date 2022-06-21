@@ -1,4 +1,4 @@
-This is an example for https://stylify.dev/docs/integrations/webpack
+This is an example for https://stylifycss.com/docs/integrations/webpack
 
 ## Setup
 The Webpack commands are listed inside the package.json
