@@ -1,1 +1,1 @@
-html {--blue: steelblue;}.color\:\$blue{color:steelblue}.font-size\:48px{font-size:48px}
+:root {--titleSize: 48px;}.font-size\:\$titleSize,.title{font-size:48px}.text-align\:center,.title{text-align:center}

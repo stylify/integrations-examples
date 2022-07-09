@@ -1,3 +1,13 @@
+{*
+stylify-variables
+	titleSize: '48px'
+/stylify-variables
+
+stylify-files
+    ./_content.latte
+/stylify-files
+*}
+
 {block content}
 <link rel="stylesheet" href="/static/css/homepage.css">
-<div class="color:$blue font-size:48px">Hello World!</div>
+{include './_content.latte'}
