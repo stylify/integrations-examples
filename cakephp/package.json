@@ -1,0 +1,10 @@
+{
+  "dependencies": {},
+  "devDependencies": {
+    "@stylify/bundler": "^0.4.0"
+  },
+  "scripts": {
+    "stylify:build": "node stylify.js",
+    "stylify:dev": "node stylify.js --w"
+  }
+}
