@@ -1,17 +1,15 @@
-const { nativePreset } = require('@stylify/stylify');
 const { Bundler } = require('@stylify/bundler');
 
 const watchFiles = process.argv[process.argv.length - 1] === '--w';
 
-nativePreset.compiler.components = {
-	container: 'max-width:1024px margin:0__auto'
-}
-
-nativePreset.compiler.mangleSelectors = !watchFiles;
-
 const bundler = new Bundler({
-	compiler: nativePreset.compiler,
-	watchFiles: watchFiles
+	watchFiles: watchFiles,
+	compiler: {
+		mangleSelectors: !watchFiles,
+		components: {
+			container: 'max-width:1024px margin:0__auto'
+		}
+	},
 });
 
 bundler.bundle([
