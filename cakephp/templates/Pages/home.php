@@ -6,8 +6,6 @@ use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Http\Exception\NotFoundException;
 
-$this->disableAutoLayout();
-
 $checkConnection = function (string $name) {
     $error = null;
     $connected = false;
@@ -40,7 +38,7 @@ endif;
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-       Stylify + Cake PHP example
+       Stylify + CakePHP example
     </title>
     <?= $this->Html->meta('icon') ?>
 
@@ -56,7 +54,7 @@ endif;
         font-size:48px
         font-family:arial
     ">
-        Stylify + Cake PHP 🍓 = 🎂
+        Stylify + CakePHP 🍓 = 🎂
     </h1>
 </body>
 </html>
