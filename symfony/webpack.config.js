@@ -1,28 +1,23 @@
 const Encore = require('@symfony/webpack-encore');
-const { webpackPlugin } = require('@stylify/unplugin');
+const { stylifyWebpack } = require('@stylify/unplugin');
 
 const layoutCssPath = './assets/styles/layout.css';
 const homepageCssPath = './assets/styles/homepage.css';
 
-const stylifyPlugin = webpackPlugin({
-	transformIncludeFilter: (id) => id.endsWith('twig') || id.endsWith('php'),
+const stylifyPlugin = stylifyWebpack({
 	bundles: [
 		{ outputFile: layoutCssPath, files: ['./templates/base.html.twig'] },
 		{ outputFile: homepageCssPath, files: ['./templates/homepage.html.twig'] }
 	],
-	extend: {
-        bundler: {
-            compiler: {
-                variables: {
-                  	containerSize: '800px',
-                    textColor: 'blue'
-                },
-                components: {
-                    container: 'max-width:$containerSize margin:0__auto'
-                }
-            }
-        }
-    }
+	compiler: {
+		variables: {
+			containerSize: '800px',
+			textColor: 'blue'
+		},
+		components: {
+			container: 'max-width:$containerSize margin:0_auto'
+		}
+	}
 });
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
@@ -32,25 +27,25 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
-    .addPlugin(stylifyPlugin)
-    .addStyleEntry('layout', layoutCssPath)
-    .addStyleEntry('homepage', homepageCssPath)
+	.addPlugin(stylifyPlugin)
+	.addStyleEntry('layout', layoutCssPath)
+	.addStyleEntry('homepage', homepageCssPath)
 
-    .setOutputPath('public/build/')
-    .setPublicPath('/build')
-    .enableStimulusBridge('./assets/controllers.json')
-    .splitEntryChunks()
-    .enableSingleRuntimeChunk()
-    .cleanupOutputBeforeBuild()
-    .enableBuildNotifications()
-    .enableSourceMaps(!Encore.isProduction())
-    .enableVersioning(Encore.isProduction())
-    .configureBabel((config) => {
-        config.plugins.push('@babel/plugin-proposal-class-properties');
-    })
-    .configureBabelPresetEnv((config) => {
-        config.useBuiltIns = 'usage';
-        config.corejs = 3;
-    });
+	.setOutputPath('public/build/')
+	.setPublicPath('/build')
+	.enableStimulusBridge('./assets/controllers.json')
+	.splitEntryChunks()
+	.enableSingleRuntimeChunk()
+	.cleanupOutputBeforeBuild()
+	.enableBuildNotifications()
+	.enableSourceMaps(!Encore.isProduction())
+	.enableVersioning(Encore.isProduction())
+	.configureBabel((config) => {
+		config.plugins.push('@babel/plugin-proposal-class-properties');
+	})
+	.configureBabelPresetEnv((config) => {
+		config.useBuiltIns = 'usage';
+		config.corejs = 3;
+	});
 
 module.exports = Encore.getWebpackConfig();

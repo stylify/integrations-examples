@@ -4,6 +4,6 @@
 		"watch": "node bundles.js --w"
 	},
 	"devDependencies": {
-		"@stylify/bundler": "^0.1"
+		"@stylify/bundler": "^0.5"
 	}
 }

@@ -1,7 +1,7 @@
 {
     "devDependencies": {
         "@hotwired/stimulus": "^3.0",
-        "@stylify/unplugin": "0.0",
+        "@stylify/unplugin": "^0.5",
         "@symfony/stimulus-bridge": "^3.2",
         "@symfony/webpack-encore": "^2.1",
         "core-js": "^3.2",

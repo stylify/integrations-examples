@@ -1,6 +1,6 @@
 
 const path = require('path');
-const { webpackPlugin } = require('@stylify/unplugin');
+const { stylifyWebpack } = require('@stylify/unplugin');
 
 const mode = 'development';
 
@@ -16,8 +16,7 @@ module.exports = {
 		],
 	},
 	plugins: [
-		webpackPlugin({
-			transformIncludeFilter: (id) => id.endsWith('html'),
+		stylifyWebpack({
 			bundles: [
 				{
 					outputFile: './index.css',
@@ -25,13 +24,9 @@ module.exports = {
 					rewriteSelectorsInFiles: mode === 'production'
 				}
 			],
-			extend: {
-				bundler: {
-					compiler: {
-						variables: {
-							blue: 'steelblue'
-						}
-					}
+			compiler: {
+				variables: {
+					blue: 'steelblue'
 				}
 			}
 		})

@@ -4,7 +4,7 @@
     "watch": "rollup -c ./rollup.config.js -w"
   },
   "devDependencies": {
-    "@stylify/unplugin": "^0.0",
+    "@stylify/unplugin": "^0.5",
     "postcss": "^8.4",
     "rollup": "^2.75",
     "rollup-plugin-postcss": "^4.0"
