@@ -1,7 +1,7 @@
 {
   "dependencies": {},
   "devDependencies": {
-    "@stylify/bundler": "^0.5"
+    "@stylify/bundler": "^0.6"
   },
   "scripts": {
     "stylify:build": "node stylify.js",
