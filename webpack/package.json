@@ -4,7 +4,7 @@
     "watch": "webpack -w"
   },
   "devDependencies": {
-    "@stylify/unplugin": "^0.5",
+    "@stylify/unplugin": "^0.6",
     "css-loader": "^6.7",
     "postcss": "^8.4",
     "postcss-loader": "^7.0",
